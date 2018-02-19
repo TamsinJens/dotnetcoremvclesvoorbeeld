@@ -1,0 +1,25 @@
+﻿@using MyHowest;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Studenten</title>
+</head>
+<body>
+    <ul>
+    @foreach (Student student in ViewBag.Studenten)
+    {
+        <li>@student.id</li>
+        <li>@student.Naam</li>
+        <li>@student.AfstudeerGraad</li>
+        
+    }
+        </ul>
+
+</body>
+</html>
