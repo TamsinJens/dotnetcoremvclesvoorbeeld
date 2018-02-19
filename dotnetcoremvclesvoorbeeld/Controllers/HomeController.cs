@@ -8,9 +8,26 @@ namespace dotnetcoremvclesvoorbeeld.Controllers
 {
     public class HomeController : Controller
     {
-        public string Index(string name)
+
+        private string[] groenten = { "Rode kool", "Spruitjes", "Wortel", "Spinazie" };
+
+        public ViewResult Index(string name)
         {
-            return $"Hallo {name} ;)";
+            ViewBag.Groet = DateTime.Now.Hour < 12 ? "Goeiemorgen" : "Goeiemiddag";
+            return View();
         }
+
+        public ViewResult Groenten(string ZoekGroente)
+        {
+            ViewBag.Groenten = groenten;
+            if (string.IsNullOrEmpty(ZoekGroente))
+            {
+                ViewBag.Zoekresultaat = $"de gezochte groente is " +
+                                                    $"de {Array.IndexOf(groenten, ZoekGroente) + 1}e uit de lijst";
+            }
+            
+            return View();
+        }
+
     }
 }
